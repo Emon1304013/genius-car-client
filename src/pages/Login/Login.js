@@ -4,7 +4,7 @@ import image from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Login = () => {
-  const {signInUser} = useContext(AuthContext); 
+  const {signInUser,loading,setLoading} = useContext(AuthContext); 
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -15,6 +15,7 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       console.log(user);
+      setLoading(false);
       alert("User logged in successfully");
       form.reset();
     })
@@ -62,7 +63,9 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#FF3811] border-none text-white ">Login</button>
+              <button className="btn bg-[#FF3811] border-none text-white ">
+                {loading ? 'Loading...': 'Login'}
+              </button>
             </div>
 
             <label className="label">

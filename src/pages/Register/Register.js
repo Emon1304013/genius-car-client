@@ -5,7 +5,7 @@ import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Register = () => {
-    const {createUser,user} = useContext(AuthContext)
+    const {createUser,user,loading} = useContext(AuthContext)
 
 
     const handleRegister = (event) => {
@@ -81,7 +81,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-[#FF3811] border-none text-white">
-                Sign Up
+                {loading ? 'Loading...': 'Sign Up'}
               </button>
             </div>
 
