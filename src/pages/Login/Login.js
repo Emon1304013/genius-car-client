@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import image from "../../assets/images/login/login.svg";
 
 const Login = () => {
+  // const {} = 
+
+  const handleLogin = () => {
+
+  }
   return (
     <div className="hero mb-10">
       <div className="hero-content grid grid-cols-1 lg:grid-cols-2 px-10">
@@ -10,7 +15,7 @@ const Login = () => {
           <img src={image} alt="" />
         </div>
         <div className="card flex w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <h1 className="text-5xl font-bold text-center">Login</h1>
             <div className="form-control">
               <label className="label">

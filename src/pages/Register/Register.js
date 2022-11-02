@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import image from "../../assets/images/login/login.svg";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Register = () => {
+    const {createUser,user} = useContext(AuthContext)
+
+
+    const handleRegister = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      createUser(email,password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
+
+
+
   return (
     <div className="hero mb-10">
       <div className="hero-content grid grid-cols-1 lg:grid-cols-2 px-10">
@@ -11,7 +33,7 @@ const Register = () => {
           <img src={image} alt="" />
         </div>
         <div className="card flex w-full max-w-sm mx-auto shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleRegister} className="card-body">
             <h1 className="text-5xl font-bold text-center">Sign Up</h1>
             <div className="form-control">
               <label className="label">
@@ -19,8 +41,9 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                placeholder="text"
+                placeholder="Name"
                 className="input input-bordered"
+                name='name'
                 required
               />
             </div>
@@ -31,6 +54,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name='email'
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -42,6 +66,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name='password'
                 placeholder="password"
                 className="input input-bordered"
                 required
