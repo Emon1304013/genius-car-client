@@ -18,6 +18,8 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        alert("User registered successfully")
+        form.reset();
       })
       .catch((error) => {
         console.log(error);
